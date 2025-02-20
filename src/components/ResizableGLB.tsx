@@ -34,7 +34,7 @@ const ResizableGLB: React.FC<ResizableGLBProps> = ({ url }) => {
             label='Width (cm):'
             type='number'
             value={scaleX}
-            onChange={(e) => setScaleY(parseFloat(e.target.value))}
+            onChange={(e) => setScaleX(parseFloat(e.target.value))}
             />
           <Slider
             value={scaleX}
