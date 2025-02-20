@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, useGLTF } from "@react-three/drei";
-import { Slider } from "@material-ui/core";
+import { Slider, TextField } from "@material-ui/core";
 
 interface ResizableGLBProps {
   url: string;
@@ -11,40 +11,53 @@ interface ResizableGLBProps {
 const ResizableGLB: React.FC<ResizableGLBProps> = ({ url }) => {
   const { scene } = useGLTF(url);
   const modelRef = useRef<THREE.Group>(null);
-  const [scaleX, setScaleX] = useState(1);
-  const [scaleY, setScaleY] = useState(1);
+  const [scaleX, setScaleX] = useState(100);
+  const [scaleY, setScaleY] = useState(100);
 
   return (
     <div>
-      <Canvas style={{ width: "100vw", height: "50vh" }}>
+      <Canvas style={{ width: "80vw", height: "50vh" }}>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
         <primitive
           ref={modelRef}
           object={scene}
-          scale={[scaleX, scaleY, 1]}
+          scale={[scaleX/100, scaleY/100, 1]}
           position={[0, 0, 0]}
         />
         <OrbitControls />
       </Canvas>
-      <div style={{ marginTop: "20px" }}>
-        <div>
-          <label>Scale X: </label>
+      <div style={{ marginTop: "20px", display:'flex',flexDirection:'column',gap:'20px' }}>
+      <div style={{display:'flex', gap:'10px', alignItems:'center'}}>
+      <TextField
+            variant="outlined"
+            label='Scale X:'
+            type='number'
+            value={scaleX}
+            onChange={(e) => setScaleY(parseFloat(e.target.value))}
+            />
           <Slider
             value={scaleX}
-            min={0.1}
-            max={5}
-            step={0.1}
+            min={1}
+            max={300}
+            step={1}
             onChange={(_, value) => setScaleX(value as number)}
           />
         </div>
-        <div>
-          <label>Scale Y: </label>
+        <div style={{display:'flex', gap:'10px', alignItems:'center'}}>
+          
+            <TextField
+            variant="outlined"
+            label='Scale Y:'
+            type='number'
+            value={scaleY}
+            onChange={(e) => setScaleY(parseFloat(e.target.value))}
+            />
           <Slider
             value={scaleY}
-            min={0.1}
-            max={5}
-            step={0.1}
+            min={1}
+            max={300}
+            step={1}
             onChange={(_, value) => setScaleY(value as number)}
           />
         </div>
