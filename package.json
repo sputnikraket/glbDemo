@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@google/model-viewer": "^4.0.0",
+    "@material-ui/core": "^4.12.4",
     "@react-three/drei": "^9.121.5",
     "@react-three/fiber": "^8.17.14",
     "react": "^18.0.0",
