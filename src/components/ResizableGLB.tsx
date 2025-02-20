@@ -31,7 +31,7 @@ const ResizableGLB: React.FC<ResizableGLBProps> = ({ url }) => {
       <div style={{display:'flex', gap:'10px', alignItems:'center'}}>
       <TextField
             variant="outlined"
-            label='Scale X:'
+            label='Width (cm):'
             type='number'
             value={scaleX}
             onChange={(e) => setScaleY(parseFloat(e.target.value))}
@@ -48,7 +48,7 @@ const ResizableGLB: React.FC<ResizableGLBProps> = ({ url }) => {
           
             <TextField
             variant="outlined"
-            label='Scale Y:'
+            label='Height (cm):'
             type='number'
             value={scaleY}
             onChange={(e) => setScaleY(parseFloat(e.target.value))}
